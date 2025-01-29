@@ -33,19 +33,19 @@
     ];
 
     extraPackages = with pkgs; [
-      lua-language-server
-      libgcc
-      pyright
       nodejs
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
+      nodePackages.bash-language-server
+      clang-tools
+      lua-language-server
+      pyright
       nil
       zls
-      clang-tools
-      nodePackages.bash-language-server
 
       ripgrep
       fd
+      gccgo14
     ];
 
     extraConfig = ''
@@ -85,8 +85,8 @@
 
       -- Setup language servers
       lspconfig.lua_ls.setup({ capabilities = capabilities })
+      lspconfig.ts_ls.setup({ capabilities = capabilities })
       lspconfig.pyright.setup({ capabilities = capabilities })
-      lspconfig.tsserver.setup({ capabilities = capabilities })
       lspconfig.nil_ls.setup({ capabilities = capabilities })
 
       lspconfig.zls.setup({

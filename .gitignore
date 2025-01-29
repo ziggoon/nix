@@ -1,3 +1,6 @@
 *.backup
 result
+
 flake.lock
+hardware-configuration.nix
+configuration.nix

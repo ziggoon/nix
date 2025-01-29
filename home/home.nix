@@ -16,6 +16,7 @@
     enableNixpkgsReleaseCheck = false;
 
     packages = with pkgs; [
+      unzip
       fastfetch
       ghostty
       git
@@ -25,6 +26,8 @@
       wget
       btop
       firefox-devedition-unwrapped
+      cargo
+      gh
     ];
   };
 
