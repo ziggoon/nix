@@ -5,8 +5,8 @@
     ./nvim.nix
     ./modules/zsh.nix 
     ./modules/tmux.nix
-    ./modules/i3.nix
-    ./modules/i3status-rs.nix
+    #./modules/i3.nix
+    #./modules/i3status-rs.nix
   ];
 
   home = {
@@ -17,14 +17,11 @@
 
     packages = with pkgs; [
       fastfetch
-      ghostty
+      btop
       git
-      uv
       eza
       curl
       wget
-      btop
-      firefox-devedition-unwrapped
     ];
   };
 

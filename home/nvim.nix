@@ -21,31 +21,12 @@
       telescope-nvim
       tokyonight-nvim
       (nvim-treesitter.withPlugins (plugins: with plugins; [
-        lua
-        python
-        javascript
-        typescript
-        nix
-        zig
-        c
-        bash
+        #python
       ]))
     ];
 
     extraPackages = with pkgs; [
-      lua-language-server
-      libgcc
-      pyright
-      nodejs
-      nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
-      nil
-      zls
-      clang-tools
-      nodePackages.bash-language-server
-
-      ripgrep
-      fd
+      #pyright
     ];
 
     extraConfig = ''
@@ -71,45 +52,10 @@
       require("mason").setup()
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "clangd",
-          "lua_ls",
-          "pyright",
-          "ts_ls",
-          "nil_ls",
-          "zls",
-          "bashls",
         },
       })
 
       local lspconfig = require("lspconfig")
-
-      -- Setup language servers
-      lspconfig.lua_ls.setup({ capabilities = capabilities })
-      lspconfig.pyright.setup({ capabilities = capabilities })
-      lspconfig.tsserver.setup({ capabilities = capabilities })
-      lspconfig.nil_ls.setup({ capabilities = capabilities })
-
-      lspconfig.zls.setup({
-        capabilities = capabilities,
-        settings = {
-          zig = {
-            checkOnSave = true,
-          }
-        }
-      })
-
-      -- C setup
-      lspconfig.clangd.setup({
-        capabilities = capabilities,
-        cmd = { "clangd", "--background-index" },
-        filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-      })
-
-      -- Bash setup
-      lspconfig.bashls.setup({
-        capabilities = capabilities,
-        filetypes = { "sh", "bash", "zsh" },
-      })
 
       -- Global LSP keybindings
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })

@@ -16,15 +16,7 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  programs.zsh.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    dmenu
-    i3status-rust
-    picom
-    zig
-  ];
-
   nixpkgs.config.allowUnfree = true;
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
