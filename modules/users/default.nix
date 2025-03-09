@@ -6,6 +6,9 @@
     description = "ziggoon";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [];
+    packages = with pkgs; [
+      neovim
+      zsh
+    ];
   };
 }

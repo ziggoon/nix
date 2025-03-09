@@ -12,11 +12,6 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [
-          (final: prev: {
-            zig = final.callPackage ./pkgs/zig {};
-          })
-        ];
       };
     in {
       nixosConfigurations."nix" = nixpkgs.lib.nixosSystem {
